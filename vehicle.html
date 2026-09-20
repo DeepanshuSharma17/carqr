@@ -1,0 +1,96 @@
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Vehicle Profile - Car QR</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>🚗 Vehicle Profile</h1>
+
+    <h2 id="vehicleNumber">Vehicle Number</h2>
+
+    <p id="ownerName">Owner Name</p>
+
+    <p id="carQRId">CarQR ID</p>
+
+    <p>📱 Mobile Number: 🔒 Hidden</p>
+
+    <br>
+
+    <button onclick="contactOwner()">Contact Owner</button>
+
+    <button onclick="parkingAlert()">Parking Alert</button>
+
+    <br><br>
+
+    <h3>Your CarQR Code</h3>
+
+    <div id="qrcode"></div>
+
+
+    <!-- QR Code Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+
+    <script>
+
+        // Get saved vehicle data
+
+        const vehicleNumber = localStorage.getItem("vehicleNumber");
+        const ownerName = localStorage.getItem("ownerName");
+        const carQRId = localStorage.getItem("carQRId");
+
+
+        // Show vehicle information
+
+        document.getElementById("vehicleNumber").innerText =
+            vehicleNumber;
+
+        document.getElementById("ownerName").innerText =
+            "Owner: " + ownerName;
+
+        document.getElementById("carQRId").innerText =
+            "CarQR ID: " + carQRId;
+
+
+        // Create QR Code
+
+        new QRCode(document.getElementById("qrcode"), {
+
+            text: carQRId,
+
+            width: 200,
+
+            height: 200
+
+        });
+
+
+        // Contact Owner button
+
+        function contactOwner() {
+
+            alert("Owner will be contacted.");
+
+        }
+
+
+        // Parking Alert button
+
+        function parkingAlert() {
+
+            alert("Parking alert sent.");
+
+        }
+
+    </script>
+
+</body>
+
+</html>
+```

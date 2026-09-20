@@ -1,0 +1,81 @@
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Register Your Vehicle - Car QR</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>Register Your Vehicle</h1>
+
+    <p>Create your vehicle profile</p>
+
+    <form>
+
+        <label>Vehicle Number</label>
+        <br>
+        <input type="text" placeholder="e.g. UP14AB1234" required>
+
+        <br><br>
+
+        <label>Owner Name</label>
+        <br>
+        <input type="text" placeholder="Enter your name" required>
+
+        <br><br>
+
+        <label>Mobile Number</label>
+        <br>
+        <input type="tel" placeholder="Enter mobile number" required>
+
+        <br><br>
+
+        <label>Email</label>
+        <br>
+        <input type="email" placeholder="Enter email">
+
+        <br><br>
+
+        <button type="submit">Register Vehicle</button>
+
+    </form>
+
+
+    <script>
+
+        document.querySelector("form").addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            // Vehicle details
+            const vehicleNumber = document.querySelectorAll("input")[0].value;
+            const ownerName = document.querySelectorAll("input")[1].value;
+            const mobileNumber = document.querySelectorAll("input")[2].value;
+            const email = document.querySelectorAll("input")[3].value;
+
+            // Unique CarQR ID
+            const carQRId = "CQ-" +
+                Math.random().toString(36).substring(2, 7).toUpperCase();
+
+            // Save data
+            localStorage.setItem("carQRId", carQRId);
+            localStorage.setItem("vehicleNumber", vehicleNumber);
+            localStorage.setItem("ownerName", ownerName);
+            localStorage.setItem("mobileNumber", mobileNumber);
+            localStorage.setItem("email", email);
+
+            // Success message
+            alert("Vehicle Data Saved Successfully!");
+
+        });
+
+    </script>
+
+</body>
+
+</html>
+```
